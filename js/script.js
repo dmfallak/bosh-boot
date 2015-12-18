@@ -260,6 +260,9 @@ var AWSCloudConfigSchema = {
         },
         "releases": {
           "type": "array",
+          "options": {
+            "collapsed": true
+          },
           "format": "table",
           "title": "Releases",
           "description": "Write a fancy description here",
@@ -285,6 +288,9 @@ var AWSCloudConfigSchema = {
         },
         "stemcells": {
           "type": "array",
+          "options": {
+            "collapsed": true
+          },
           "format": "table",
           "title": "Stemcells",
           "description": "Write a fancy description here for stemcells",
@@ -307,6 +313,9 @@ var AWSCloudConfigSchema = {
         },
         "update": {
           "type": "object",
+          "options": {
+            "collapsed": true
+          },
           "title": "Update",
           "properties": {
             "canaries": {
@@ -331,6 +340,9 @@ var AWSCloudConfigSchema = {
 
         "meta": {
           "type": "object",
+          "options": {
+            "collapsed": true
+          },
           "title": "Meta",
           "properties": {
             "environment": {
@@ -344,6 +356,9 @@ var AWSCloudConfigSchema = {
 
         "jobs": {
           "type": "array",
+          "options": {
+            "collapsed": true
+          },
           "title": "Jobs",
           "description": "Write a fancy description here",
           "uniqueItems": true,
