@@ -1,4 +1,4 @@
-var editor, awsCloudConfigEditor;
+var editor, awsCloudConfigEditor, deploymentManifestEditor;
 
 $().ready( function() {
   JSONEditor.defaults.options.theme = 'bootstrap3';
@@ -19,6 +19,15 @@ $().ready( function() {
       showAWSCloudConfigEditor();
     }
   });
+
+  $("#aws-cloud-config-next").click(function () {
+
+    $('#aws-cloud-config').hide();
+    $('#deployment-manifest').show();
+
+    showDeploymentManifestEditor();
+  });
+
 });
 
 var showIAASEditor = function () {
@@ -27,6 +36,10 @@ var showIAASEditor = function () {
 
 var showAWSCloudConfigEditor = function () {
   awsCloudConfigEditor = new JSONEditor(document.getElementById("aws-cc-editor"), AWSCloudConfigSchema);
+};
+
+var showDeploymentManifestEditor = function () {
+  deploymentManifestEditor = new JSONEditor(document.getElementById("deployment-manifest-editor"), DeploymentManifestSchema);
 };
 
 var IAASSchema = {
@@ -222,6 +235,173 @@ var AWSCloudConfigSchema = {
                 "properties": {
                   "instance_type": {
                     "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  var DeploymentManifestSchema = {
+    "schema": {
+      "title": "Deployment-manifest",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the deployment"
+        },
+        "director_uuid": {
+          "type": "string",
+          "description": "UUID"
+        },
+        "releases": {
+          "type": "array",
+          "format": "table",
+          "title": "Releases",
+          "description": "Write a fancy description here",
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "title": "Release",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "version": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              },
+              "sha1": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "stemcells": {
+          "type": "array",
+          "format": "table",
+          "title": "Stemcells",
+          "description": "Write a fancy description here for stemcells",
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "title": "Stemcel",
+            "properties": {
+              "alias": {
+                "type": "string"
+              },
+              "os": {
+                "type": "string"
+              },
+              "version": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "update": {
+          "type": "object",
+          "title": "Update",
+          "properties": {
+            "canaries": {
+              "type": "integer"
+            },
+            "canary_watch_time": {
+              "type": "string"
+            },
+            "max_in_flight": {
+              "type": "integer"
+            },
+            "update_watch_time": {
+              "type": "string"
+            },
+            "serial": {
+              "type": "boolean",
+              "format": "checkbox",
+              "default": false
+            }
+          }
+        },
+
+        "meta": {
+          "type": "object",
+          "title": "Meta",
+          "properties": {
+            "environment": {
+              "type": "string"
+            },
+            "syslog_aggregator": {
+              "type": "string"
+            }
+          }
+        },
+
+        "jobs": {
+          "type": "array",
+          "title": "Jobs",
+          "description": "Write a fancy description here",
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "title": "Job",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "instances": {
+                "type": "integer"
+              },
+              "stemcell": {
+                "type": "string"
+              },
+              "persistent_disk_pool": {
+                "type": "string"
+              },
+              "release": {
+                "type": "string"
+              },
+              "networks": {
+                "type": "array",
+                "title": "Networks",
+                "description": "add afancy description",
+                "items": {
+                  "type": "object",
+                  "title": "Network",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "azs": {
+                "type": "array",
+                "title": "azs",
+                "items": {
+                  "type": "string",
+                  "title": "az"
+                }
+              },
+              "templates": {
+                "type": "array",
+                "title": "Tempaltes",
+                "description": "add afancy description",
+                "items": {
+                  "type": "object",
+                  "title": "Template",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "release": {
+                      "type": "string"
+                    }
                   }
                 }
               }
