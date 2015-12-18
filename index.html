@@ -1,13 +1,48 @@
 <html>
   <head>
     <title>Bosh Boot</title>
-    <link rel="stylesheet" href="./css/materialize.min.css">
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
+
     <script src="./js/jquery-2.1.4.js"></script>
-    <script src="./js/materialize.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
     <script src="./js/yaml.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/jsoneditor.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
+
   <body>
-    <h1>Bosh Boot</h1>
-    Under construction....
+    <div id="index-banner">
+      <div class="container">
+        <br><br>
+        <h1>Bosh Boot</h1>
+        <!-- <div class="row center"> -->
+          <h5>Create stand-alone bosh depoyment manifests.</h5>
+        <!-- </div> -->
+        <br>
+        <div>
+          <a id="get-started" class="btn btn-default">Get Started</a>
+        </div>
+        <br><br>
+
+      </div>
+    </div>
+
+    <div class="section no-pad-bot" id="iaas" style="display:none">
+      <div class="container">
+        <br><br>
+
+        <form>
+        </form>
+        <div class="row center">
+          <div id='iaas-editor'></div>
+          <a id="iaas-next" class="btn btn-default">Next</a>
+        </div>
+
+        <br><br>
+      </div>
+    </div>
   </body>
 </html>
