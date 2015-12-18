@@ -2,12 +2,11 @@ var editor, awsCloudConfigEditor;
 
 $().ready( function() {
   JSONEditor.defaults.options.theme = 'bootstrap3';
-  JSONEditor.defaults.editors.object.options.collapsed = true;
+
 
   $("#get-started").click(function() {
     $("#index-banner").hide();
     $("#iaas").show();
-
     showIAASEditor();
   });
 
@@ -17,7 +16,6 @@ $().ready( function() {
     if (data.IAAS === 'AWS') {
       $('#iaas').hide();
       $('#aws-cloud-config').show();
-
       showAWSCloudConfigEditor();
     }
   });
@@ -51,6 +49,9 @@ var AWSCloudConfigSchema = {
     "properties": {
         "compilation": {
           "type": "object",
+          "options": {
+            "collapsed": true
+          },
           "properties": {
             "az": {
               "type": "string"
@@ -90,6 +91,9 @@ var AWSCloudConfigSchema = {
         },
         "disk_pools": {
           "type": "array",
+          "options": {
+            "collapsed": true
+          },
           "uniqueItems": true,
           "items": {
             "type": "object",
@@ -116,6 +120,9 @@ var AWSCloudConfigSchema = {
         },
         "azs": {
           "type": "array",
+          "options": {
+            "collapsed": true
+          },
           "uniqueItems": true,
           "items": {
             "type": "object",
@@ -138,9 +145,10 @@ var AWSCloudConfigSchema = {
         },
         "networks": {
           "type": "array",
-          "title": "Networks",
+          "options": {
+            "collapsed": true
+          },
           "uniqueItems": true,
-
           "items": {
             "type": "object",
             "title": "Network",
@@ -151,7 +159,6 @@ var AWSCloudConfigSchema = {
 
               "subnets": {
                 "type": "array",
-                "title": "Subnets",
                 "uniqueItems": true,
 
                 "items": {
@@ -170,10 +177,10 @@ var AWSCloudConfigSchema = {
                     },
                     "dns": {
                       "type": "array",
-                      "title": "DNS",
 
                       "items": {
-                        "type": "string"
+                        "type": "string",
+                        "title": "DNS"
                       }
                     },
                     "gateway": {
@@ -199,6 +206,9 @@ var AWSCloudConfigSchema = {
         },
         "vm_types": {
           "type": "array",
+          "options": {
+            "collapsed": true
+          },
           "uniqueItems": true,
           "items": {
             "type": "object",
