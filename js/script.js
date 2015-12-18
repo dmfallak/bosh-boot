@@ -2,6 +2,7 @@ var editor, awsCloudConfigEditor;
 
 $().ready( function() {
   JSONEditor.defaults.options.theme = 'bootstrap3';
+  JSONEditor.defaults.editors.object.options.collapsed = true;
 
   $("#get-started").click(function() {
     $("#index-banner").hide();
