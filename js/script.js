@@ -28,6 +28,13 @@ $().ready( function() {
     showDeploymentManifestEditor();
   });
 
+  $("#generate-manifests-button").click(function() {
+    $("#cloud-config-output").text(YAML.stringify(awsCloudConfigEditor.getValue()));
+    $("#deployment-manifest-output").text(YAML.stringify(deploymentManifestEditor.getValue()));
+    $("#deployment-manifest").hide();
+    $("#output-view").show();
+    $("#cloud-config-tab-button").click();
+  })
 });
 
 var showIAASEditor = function () {

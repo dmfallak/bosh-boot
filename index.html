@@ -59,11 +59,30 @@
       <div class="container">
 
           <div id='deployment-manifest-editor'></div>
-      
-          <a id="deployment-manifest-next" class="btn btn-default">Next</a>
-      
+
+          <a id="generate-manifests-button" class="btn btn-default">Generate Manifests</a>
+
       </div>
     </div>
+
+    <ul class="nav nav-tabs nav-justified" id="output-view" style="display:none">
+      <li>
+        <a href="#cloud-config-output-i" data-toggle="tab" id="cloud-config-tab-button">Cloud Config</a>
+      </li>
+      <li>
+        <a href="#deployment-manifest-output-i" data-toggle="tab">Deployment Manifest</a>
+      </li>
+    </ul>
+
+    <div class="tab-content">
+      <div id="cloud-config-output-i" class="tab-pane">
+        <pre id="cloud-config-output"></pre>
+      </div>
+      <div id="deployment-manifest-output-i" class="tab-pane">
+        <pre id="deployment-manifest-output"></pre>
+      </div>
+    </div>
+
 
   </body>
 </html>
